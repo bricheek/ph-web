@@ -6,19 +6,22 @@ export async function signIn({ email, password }) {
   const res = await axios.post(url, { email, password });
   return res.data;
 }
+export async function signOut() {
+  const url = `${apiUrl}/logout`;
+  const res = await axios.post(url, {});
+  return res.data;
+}
 export async function signUp({
   email,
   password,
   secureNote,
 }) {
   const url = `${apiUrl}/register`;
-  console.log("url: " + url)
   const res = await axios.post(url, {
     email,
     password,
     secureNote,
   });
-  console.log("res.data: " + res.data);
   return res.data;
 }
 export async function getUserData({ userIdToken, userId }) {

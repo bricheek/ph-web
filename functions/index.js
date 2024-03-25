@@ -15,6 +15,7 @@ admin.initializeApp({
 initializeApp(firebaseConfig);
 const register = require("./express/routes/register");
 const login = require("./express/routes/login");
+const logout = require("./express/routes/logout");
 const firebaseAuth = require("./express/middleware/firebase-auth");
 const getUser = require("./express/routes/get-user");
 const app = express();
@@ -23,4 +24,5 @@ app.use(morgan("dev"));
 app.post("/login", validateEmailAndPassword, login);
 app.post("/register", validateEmailAndPassword, register);
 app.get("/users/:id", firebaseAuth, getUser);
+app.post("/logout", firebaseAuth, logout);
 exports.api = functions.https.onRequest(app);

@@ -41,6 +41,13 @@ function App() {
       <div>
         <Typography variant="h6">Secure note</Typography>
         <Typography>{secureNoteRef.current}</Typography>
+        <Button 
+            variant="contained"
+            type="submit"
+            onSubmit = {() => apiService.signOut()}
+            sx={{ marginTop: 2 }}>
+          Sign out
+        </Button>
       </div>
     ) : undefined
   ) : (
