@@ -9,6 +9,9 @@ function App() {
   const { user, loading } = useAuth();
   const [dataState, setDataState] = useState(undefined);
   const secureNoteRef = useRef(undefined);
+  const handleSubmit = () => {
+    apiService.signOut()
+  };
   useEffect(() => {
     (async () => {
       if (!loading) {
@@ -44,7 +47,7 @@ function App() {
         <Button 
             variant="contained"
             type="submit"
-            onSubmit = {() => apiService.signOut()}
+            onClick = {handleSubmit}
             sx={{ marginTop: 2 }}>
           Sign out
         </Button>

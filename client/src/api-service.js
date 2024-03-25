@@ -7,8 +7,10 @@ export async function signIn({ email, password }) {
   return res.data;
 }
 export async function signOut() {
+  console.log('hit the api endpoint')
   const url = `${apiUrl}/logout`;
-  const res = await axios.post(url, {});
+  console.log('url: ' + url);
+  const res = await axios.post(url);
   return res.data;
 }
 export async function signUp({

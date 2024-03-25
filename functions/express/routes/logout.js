@@ -1,12 +1,14 @@
 const firebase = require("firebase/auth");
-const signOutUser = () => firebase.auth.signout();
-async function logout(req, res) {
-  try {
-    signOutUser();
-    res.status(200).json({res});
-  } catch (error) {
-    res.status(500);
-  }
+const auth = require("firebase/auth");
+// const signOutUser = () => firebase.auth().signout().then(() => {
+// console.log("Signed out user");
+// });
+function logout() {
+  firebase.signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log("Signed out successfully");
+  }).catch((error) => {
+    // An error happened.
+  });
 }
-
 module.exports = logout;
